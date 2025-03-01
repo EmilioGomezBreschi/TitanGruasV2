@@ -1,111 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link href="src/output.css" rel="stylesheet" />
   <link href="src/styles.css" rel="stylesheet" />
-  <title>TitanGruas-Inicio</title>
+  <title>TitanGruas - Inicio</title>
   <link rel="icon" href="src/Icons/titansvg.svg" />
+  <style>
+    .video-mobile {
+      @media (orientation: portrait) {
+        width: auto !important;
+        height: 100% !important;
+        transform: scale(1.15) translateX(-5%);
+      }
+    }
+  </style>
 </head>
 
-<body class="text-white">
-  <div class="absolute w-screen h-screen">
-    <video class="absolute top-0 left-0 w-full h-full object-fill z-[-1]" autoplay loop muted>
+<body class="text-white relative min-h-screen overflow-hidden">
+  <!-- Video Background -->
+  <div class="fixed inset-0 w-screen h-screen z-0 overflow-hidden">
+    <video class="w-full h-full object-cover scale-[1.1] video-mobile" autoplay loop muted playsinline
+      poster="src/poster.jpg">
       <source src="src/InnovaLandingIntro.mp4" type="video/mp4" />
+      <source src="src/InnovaLandingIntro.webm" type="video/webm" />
+      <img src="src/poster.jpg" alt="Background" class="w-full h-full object-cover" />
     </video>
   </div>
-  <section id="menu">
-    <!-- Contenedor del Header -->
-    <div class="flex justify-between lg:py-12 w-full backdrop-blur-xs bg-black/10">
-      <!-- Logo a la izquierda -->
-      <div class="lg:w-[300px]">
-        <div class="absolute lg:mt-[-105px] mt-[-32px] ">
-          <img src="src/Icons/titansvg.svg" alt="logo" class="lg:w-[300px] lg:h-auto w-40" />
-        </div>
-      </div>
-
-      <!-- Menú hamburguesa (solo visible en pantallas pequeñas) -->
-      <div class="lg:hidden flex justify-between items-center">
-        <!-- Icono del menú hamburguesa -->
-        <button id="menu-toggle" class="lg:hidden flex justify-end h-16 px-3">
-          <img src="src/Icons/menu.svg" alt="menu" class="w-7" />
-        </button>
-      </div>
-
-      <!-- Menú centrado (pantallas grandes) -->
-      <div class="space-x-10 text-xl hidden lg:flex">
-        <a href="index.html" class="cursor-pointer underline hover:text-[#00f900]">Inicio</a>
-        <a href="gruas.html" class="cursor-pointer hover:text-[#00f900]">Grúas</a>
-        <a href="portafolio.html" class="cursor-pointer hover:text-[#00f900]">Portafolio</a>
-        <a href="nosotros.html" class="cursor-pointer hover:text-[#00f900]">Nosotros</a>
-      </div>
-
-      <!-- Íconos sociales a la derecha (pantallas grandes) -->
-      <div class="lg:flex space-x-3 pr-5 hidden items-center">
-        <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-6 cursor-pointer hover:text-[#00f900]" />
-        <img src="src/Icons/ig.svg" alt="instagram" class="w-9 cursor-pointer" />
-        <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-6 cursor-pointer" />
-        <div
-          class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex justify-center">
-          <span>443 107 4582</span>
-        </div>
-        <div
-          class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex justify-center">
-          <span>443 169 3581</span>
-        </div>
-      </div>
+<!-- Header -->
+<header class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-sm shadow-lg">
+  <div class="container mx-auto px-4 flex justify-between items-center h-16">
+    <!-- Logo -->
+    <div class="w-32 md:w-48">
+      <img src="src/Icons/titansvg.svg" alt="Logo TitanGrúas" class="w-full h-auto" />
     </div>
-
-    <!-- Menú desplegable en pantallas pequeñas -->
-    <div id="mobile-menu" class="lg:hidden absolute top-[65px] w-full bg-black/80 backdrop-blur-md text-white hidden">
-      <div class="flex flex-col items-center space-y-4 py-5">
-        <a href="index.html" class="cursor-pointer">Inicio</a>
-        <a href="gruas.html" class="cursor-pointer">Grúas</a>
-        <a href="portafolio.html" class="cursor-pointer">Portafolio</a>
-        <a href="nosotros.html" class="cursor-pointer">Nosotros</a>
-        <div class="flex flex-row space-x-4 justify-center w-full">
-          <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-6 cursor-pointer" />
-          <img src="src/Icons/ig.svg" alt="instagram" class="w-9 cursor-pointer" />
-          <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-6 cursor-pointer" />
-        </div>
-        <div class="flex flex-row space-x-4 justify-center w-full">
-          <div
-            class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex justify-center">
-            <span>443 107 4582</span>
+<!-- Menú Desktop -->
+<nav class="hidden lg:flex items-center space-x-6 text-lg">
+  <a href="index.html" class="hover:text-[#00f900] transition-all duration-200">Inicio</a>
+  <a href="gruas.html" class="hover:text-[#00f900] transition-all duration-200">Grúas</a>
+  <a href="portafolio.html" class="hover:text-[#00f900] transition-all duration-200">Portafolio</a>
+  <a href="nosotros.html" class="hover:text-[#00f900] transition-all duration-200">Nosotros</a>
+  <div class="flex items-center space-x-4 ml-4">
+    <a href="#" class="hover:opacity-75 transition-opacity">
+      <img src="src/Icons/facebook-social-logo.svg" alt="Facebook" class="w-6" />
+    </a>
+    <a href="#" class="hover:opacity-75 transition-opacity">
+      <img src="src/Icons/ig.svg" alt="Instagram" class="w-8" />
+    </a>
+    <a href="#" class="hover:opacity-75 transition-opacity">
+      <img src="src/Icons/whatsapp.svg" alt="WhatsApp" class="w-6" />
+    </a>
+    <div class="flex space-x-2">
+      <div class="border border-white rounded-full text-xs px-3 py-1">443 107 4582</div>
+      <div class="border border-white rounded-full text-xs px-3 py-1">443 169 3581</div>
           </div>
-          <div class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex">
-            <span>443 169 3581</span>
+        </div>
+        </nav>
+
+      <!-- Botón Menú Mobile -->
+      <button id="menu-toggle" class="lg:hidden p-2 hover:opacity-75">
+        <img src="src/Icons/menu.svg" alt="Menú móvil" class="w-7" />
+      </button>
+      </div>
+
+    <!-- Menú Mobile -->
+    <div id="mobile-menu" class="lg:hidden absolute top-full w-full bg-black/90 backdrop-blur-md hidden shadow-xl">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-col items-center space-y-4">
+          <a href="index.html" class="w-full text-center py-2 hover:text-[#00f900]">Inicio</a>
+          <a href="gruas.html" class="w-full text-center py-2 hover:text-[#00f900]">Grúas</a>
+          <a href="portafolio.html" class="w-full text-center py-2 hover:text-[#00f900]">Portafolio</a>
+          <a href="nosotros.html" class="w-full text-center py-2 hover:text-[#00f900]">Nosotros</a>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="hover:opacity-75">
+              <img src="src/Icons/facebook-social-logo.svg" alt="Facebook" class="w-8" />
+            </a>
+            <a href="#" class="hover:opacity-75">
+              <img src="src/Icons/ig.svg" alt="Instagram" class="w-10" />
+            </a>
+            <a href="#" class="hover:opacity-75">
+              <img src="src/Icons/whatsapp.svg" alt="WhatsApp" class="w-8" />
+            </a>
+          </div>
+          <div class="flex flex-col space-y-2 w-full items-center mt-4">
+            <div class="border border-white rounded-full text-xs px-4 py-1">443 107 4582</div>
+            <div class="border border-white rounded-full text-xs px-4 py-1">443 169 3581</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Texto principal -->
-  <div class="absolute lg:bottom-[250px] bottom-5 left-3 lg:left-10">
-    <p class="lg:text-3xl text-lg">Servicio de grúas industriales</p>
-    <h1 class="lg:text-5xl text-2xl font-bold">EL PODER DE LOS TITANES</h1>
-    <h1 class="lg:text-5xl text-2xl font-bold">EN CADA MANIOBRA</h1>
-  </div>
+  <!-- Contenido Principal -->
+  <main class="relative z-10 pt-24 md:pt-32 pb-20 px-4 min-h-screen flex items-center">
+    <div class="container mx-auto">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+        <span class="block">EL PODER DE LOS TITANES</span>
+        <span class="block">EN CADA MANIOBRA</span>
+      </h1>
+      <p class="text-lg md:text-xl">Servicio de grúas industriales</p>
+    </div>
+  </main>
 
-  <footer class="w-full absolute bg-black/40 bottom-0 flex justify-between">
-    <img src="src/Icons/titansvg.svg" alt="logo" class="relative bottom w-16" />
-    <div class="flex flex-row justify-end space-x-2 w-full px-3">
-      <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-4 cursor-pointer hover:text-[#00f900]" />
-      <img src="src/Icons/ig.svg" alt="instagram" class="w-7 cursor-pointer" />
-      <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-4 cursor-pointer" />
+  <!-- Footer -->
+  <footer class="fixed bottom-0 w-full bg-black/40 py-2 z-50 backdrop-blur-sm">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <img src="src/Icons/titansvg.svg" alt="Logo pequeño" class="w-12" />
+      <div class="flex space-x-4">
+        <a href="#" class="p-1 hover:opacity-75">
+          <img src="src/Icons/facebook-social-logo.svg" alt="Facebook" class="w-6" />
+        </a>
+        <a href="#" class="p-1 hover:opacity-75">
+          <img src="src/Icons/ig.svg" alt="Instagram" class="w-8" />
+        </a>
+        <a href="#" class="p-1 hover:opacity-75">
+          <img src="src/Icons/whatsapp.svg" alt="WhatsApp" class="w-6" />
+        </a>
+      </div>
     </div>
   </footer>
 
-  <!-- Script para el menú hamburguesa -->
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+            document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const video = document.querySelector('video');
 
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+            // Menú móvil
+            menuToggle.addEventListener('click', (e) => {
+              e.stopPropagation();
+              mobileMenu.classList.toggle('hidden');
+          });
+
+            // Ajuste de video
+            function adjustVideo() {
+              if (window.innerHeight > window.innerWidth) {
+                video.classList.add('video-mobile');
+              } else {
+                video.classList.remove('video-mobile');
+              }
+            }
+
+            // Event listeners
+            window.addEventListener('resize', adjustVideo);
+            window.addEventListener('orientationchange', adjustVideo);
+            document.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            adjustVideo();
     });
   </script>
 </body>

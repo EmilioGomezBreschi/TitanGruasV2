@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="src/output.css" rel="stylesheet" />
+  <link href="src/styles.css" rel="stylesheet" />
+</head>
+
+<body class="text-white">
+  <div class="absolute w-screen h-screen">
+    <video class="absolute top-0 left-0 w-full h-full object-fill z-[-1]" autoplay loop muted>
+      <source src="/src/Video/Portafolio_compressed.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <section id="menu">
+    <!-- Contenedor del Header -->
+    <div class="flex justify-between lg:py-12 w-full backdrop-blur-xs bg-black/10">
+      <!-- Logo a la izquierda -->
+      <div class="lg:w-[300px]">
+        <div class="absolute lg:mt-[-105px] mt-[-32px] ">
+          <img src="src/Icons/titansvg.svg" alt="logo" class="lg:w-[300px] lg:h-auto w-40" />
+        </div>
+      </div>
+
+      <!-- Menú hamburguesa (solo visible en pantallas pequeñas) -->
+      <div class="lg:hidden flex justify-between items-center">
+        <!-- Icono del menú hamburguesa -->
+        <button id="menu-toggle" class="lg:hidden flex justify-end h-16 px-3">
+          <img src="src/Icons/menu.svg" alt="menu" class="w-7" />
+        </button>
+      </div>
+
+      <!-- Menú centrado (pantallas grandes) -->
+      <div class="space-x-10 text-xl hidden lg:flex">
+        <a href="index.html" class="cursor-pointer hover:text-[#00f900]">Inicio</a>
+        <a href="gruas.html" class="cursor-pointer hover:text-[#00f900]">Grúas</a>
+        <a href="portafolio.html" class="cursor-pointer underline hover:text-[#00f900]">Portafolio</a>
+        <a href="nosotros.html" class="cursor-pointer hover:text-[#00f900]">Nosotros</a>
+      </div>
+
+      <!-- Íconos sociales a la derecha (pantallas grandes) -->
+      <div class="lg:flex space-x-3 pr-5 hidden items-center">
+        <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-6 cursor-pointer hover:text-[#00f900]" />
+        <img src="src/Icons/ig.svg" alt="instagram" class="w-9 cursor-pointer" />
+        <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-6 cursor-pointer" />
+        <div
+          class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex justify-center">
+          <span>443 107 4582</span>
+        </div>
+        <div
+          class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex justify-center">
+          <span>443 169 3581</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú desplegable en pantallas pequeñas -->
+    <div id="mobile-menu" class="lg:hidden absolute top-[65px] w-full bg-black/80 backdrop-blur-md text-white hidden">
+      <div class="flex flex-col items-center space-y-4 py-5">
+        <a href="index.html" class="cursor-pointer">Inicio</a>
+        <a href="gruas.html" class="cursor-pointer">Grúas</a>
+        <a href="portafolio.html" class="cursor-pointer">Portafolio</a>
+        <a href="nosotros.html" class="cursor-pointer">Nosotros</a>
+        <div class="flex flex-row space-x-4 justify-center w-full">
+          <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-6 cursor-pointer" />
+          <img src="src/Icons/ig.svg" alt="instagram" class="w-9 cursor-pointer" />
+          <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-6 cursor-pointer" />
+        </div>
+        <div class="flex flex-row space-x-4 justify-center w-full">
+          <div
+            class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex justify-center">
+            <span>443 107 4582</span>
+          </div>
+          <div class="border border-white rounded-full text-white text-xs font-bold px-2 h-auto items-center flex">
+            <span>443 169 3581</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Texto principal -->
+  <div class="absolute lg:bottom-[250px] bottom-5 left-3 lg:left-10">
+    <p class="lg:text-3xl text-lg">Portafolio</p>
+    <h1 class="lg:text-5xl text-2xl font-bold">DESCUBRE POR QUÉ</h1>
+    <h1 class="lg:text-5xl text-2xl font-bold">SOMOS LA MEJOR OPCIÓN</h1>
+  </div>
+
+  <footer class="w-full absolute bg-black/40 bottom-0 flex justify-between">
+    <img src="src/Icons/titansvg.svg" alt="logo" class="relative bottom w-16" />
+    <div class="flex flex-row justify-end space-x-2 w-full px-3">
+      <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-4 cursor-pointer hover:text-[#00f900]" />
+      <img src="src/Icons/ig.svg" alt="instagram" class="w-7 cursor-pointer" />
+      <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-4 cursor-pointer" />
+    </div>
+  </footer>
+
+  <!-- Script para el menú hamburguesa -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+
+</html>

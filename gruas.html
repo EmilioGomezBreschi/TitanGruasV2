@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="src/output.css" rel="stylesheet" />
+  <link href="src/styles.css" rel="stylesheet" />
+</head>
+
+<body class="text-black">
+
+  <section id="menu">
+    <!-- Contenedor del Header -->
+    <div class="flex justify-between lg:py-12 px-5">
+
+
+      <!-- Menú centrado (pantallas grandes) -->
+      <div class="space-x-10 text-xl hidden lg:flex items-center">
+        <a href="index.html" class="cursor-pointer hover:text-[#00f900]">Inicio</a>
+        <a href="gruas.html" class="cursor-pointer underline hover:text-[#00f900]">Grúas</a>
+        <a href="portafolio.html" class="cursor-pointer hover:text-[#00f900]">Portafolio</a>
+        <a href="nosotros.html" class="cursor-pointer hover:text-[#00f900]">Nosotros</a>
+      </div>
+
+      <div class="flex flex-col lg:items-center items-start">
+        <h1 class="text-[#00f900] lg:text-6xl text-3xl font-bold">Grúas</h1>
+        <p class="lg:text-lg text-base">EL PODER DE LOS TITANES EN CADA MANIOBRA</p>
+      </div>
+      <!-- Menú hamburguesa (solo visible en pantallas pequeñas) -->
+      <div class="lg:hidden flex justify-between items-center">
+        <!-- Icono del menú hamburguesa -->
+        <button id="menu-toggle" class="lg:hidden flex justify-end h-16 px-3">
+          <img src="src/Icons/menu_black.svg" alt="menu" class="w-7" />
+        </button>
+      </div>
+
+      <!-- Íconos sociales a la derecha (pantallas grandes) -->
+      <div class="lg:flex space-x-3 pr-5 hidden items-center">
+        <img src="src/Icons/facebook-social-logo_black.svg" alt="facebook"
+          class="w-6 cursor-pointer hover:text-[#00f900]" />
+        <img src="src/Icons/ig_black.svg" alt="instagram" class="w-9 cursor-pointer" />
+        <img src="src/Icons/whatsapp_black.svg" alt="whatsapp" class="w-6 cursor-pointer" />
+        <div class="border border-black rounded-full text-xs font-bold px-2  items-center flex justify-center">
+          <span>443 107 4582</span>
+        </div>
+        <div class="border border-black rounded-full text-xs font-bold px-2 items-center flex justify-center">
+          <span>443 169 3581</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú desplegable en pantallas pequeñas -->
+    <div id="mobile-menu" class="lg:hidden absolute top-[85px] w-full bg-black/80 backdrop-blur-md text-white hidden">
+      <div class="flex flex-col items-center space-y-4 py-5">
+        <a href="index.html" class="cursor-pointer">Inicio</a>
+        <a href="gruas.html" class="cursor-pointer">Grúas</a>
+        <a href="portafolio.html" class="cursor-pointer">Portafolio</a>
+        <a href="nosotros.html" class="cursor-pointer">Nosotros</a>
+        <div class="flex flex-row space-x-4 justify-center w-full">
+          <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-6 cursor-pointer" />
+          <img src="src/Icons/ig.svg" alt="instagram" class="w-9 cursor-pointer" />
+          <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-6 cursor-pointer" />
+        </div>
+        <div class="flex flex-row space-x-4 justify-center w-full">
+          <div class="border border-white rounded-full text-xs font-bold px-2 h-auto items-center flex justify-center">
+            <span>443 107 4582</span>
+          </div>
+          <div class="border border-white rounded-full text-xs font-bold px-2 h-auto items-center flex">
+            <span>443 169 3581</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex lg:flex-row flex-col-reverse items-center justify-between lg:space-x-5 w-full">
+    <!-- Imagen -->
+    <div id="image-container" class="lg:w-1/2 w-10/12 overflow-hidden rounded-4xl lg:mx-4">
+      <img id="image" src="./src/Images/PORTADA.png" alt="Imagen 1"
+        class="w-full lg:h-[550px] object-cover transition-opacity duration-500 ease-in-out" />
+    </div>
+
+    <!-- Texto -->
+    <div class="lg:w-1/2 flex flex-col items-start justify-center space-y-8 lg:pl-6 lg:pr-60 p-4">
+      <h1 id="title" class="lg:text-6xl text-5xl font-bold text-black">Grúas titán de 12 y 15 toneladas</h1>
+      <p id="text" class="text-3xl text-black">Perfectas para trabajos de construcción, montaje de
+        estructuras, carga y descarga de materiales, y mucho más.</p>
+    </div>
+  </div>
+
+  <footer class="w-full absolute bg-black bottom-0 flex justify-between">
+    <img src="src/Icons/titansvg.svg" alt="logo" class="relative bottom w-16" />
+    <div class="flex flex-row justify-end space-x-2 w-full px-3">
+      <img src="src/Icons/facebook-social-logo.svg" alt="facebook" class="w-4 cursor-pointer hover:text-[#00f900]" />
+      <img src="src/Icons/ig.svg" alt="instagram" class="w-7 cursor-pointer" />
+      <img src="src/Icons/whatsapp.svg" alt="whatsapp" class="w-4 cursor-pointer" />
+    </div>
+  </footer>
+
+  <!-- Script para el menú hamburguesa -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Lista de imágenes y textos
+      const images = [
+        { src: './src/Images/PORTADA.png', text: 'Perfectas para trabajos de construcción, montaje de estructuras, carga y descarga de materiales, y mucho más.', title: 'Grúas titán de 12 y 15 toneladas' },
+        { src: './src/Images/montacargas.png', text: 'Diseñado para operar en entornos industriales, almacenes y centros logísticos, este montacargas ofrece un rendimiento óptimo, estabilidad y facilidad de maniobra.', title: 'Montacargas de 4.5 toneladas' },
+        { src: './src/Images/Grua_Pettibone.jpeg', text: 'Diseñadas para la construcción, la industria pesada y aplicaciones especializadas, estas grúas ofrecen una combinación perfecta de potencia y maniobrabilidad, asegurando eficiencia en cada operación.', title: 'Grúas Pettibone' }
+      ];
+
+      let currentIndex = 0;
+      let isScrolling = false; // Para evitar cambios excesivos
+      const imageElement = document.getElementById("image");
+      const textElement = document.getElementById("text");
+      const titleElement = document.getElementById("title");
+
+      function changeContent(direction) {
+        if (isScrolling) return; // Evita cambios rápidos
+        isScrolling = true;
+
+        if (direction === "down") {
+          currentIndex = (currentIndex + 1) % images.length;
+        } else {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+        }
+
+        // Efecto de fade-out
+        imageElement.style.opacity = "0";
+        textElement.style.opacity = "0";
+        titleElement.style.opacity = "0";
+
+        setTimeout(() => {
+          // Cambia la imagen y el texto
+          imageElement.src = images[currentIndex].src;
+          textElement.textContent = images[currentIndex].text;
+          titleElement.textContent = images[currentIndex].title;
+
+          // Efecto de fade-in
+          imageElement.style.opacity = "1";
+          textElement.style.opacity = "1";
+          titleElement.style.opacity = "1";
+
+          isScrolling = false; // Habilita cambios nuevamente
+        }, 300);
+      }
+
+      // 📌 Scroll con rueda del mouse (PC)
+      window.addEventListener("wheel", (event) => {
+        if (event.deltaY > 0) {
+          changeContent("down"); // Scroll hacia abajo
+        } else {
+          changeContent("up"); // Scroll hacia arriba
+        }
+      });
+
+      // 📌 Swipe en móviles
+      let touchStartY = 0;
+      window.addEventListener("touchstart", (e) => {
+        touchStartY = e.touches[0].clientY;
+      });
+
+      window.addEventListener("touchend", (e) => {
+        let touchEndY = e.changedTouches[0].clientY;
+        let difference = touchStartY - touchEndY;
+        if (Math.abs(difference) > 50) { // Detecta swipe fuerte
+          if (difference > 0) {
+            changeContent("down");
+          } else {
+            changeContent("up");
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

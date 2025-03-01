@@ -1,0 +1,22 @@
+@font-face {
+	font-family: "Helvetica Now Display";
+	src: url("/src/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2"),
+		url("/src/fonts/HelveticaNowDisplay-Regular.woff") format("woff"),
+		url("/src/fonts/HelveticaNowDisplay-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Helvetica Now Display";
+	src: url("/src/fonts/HelveticaNowDisplay-Bold.woff2") format("woff2"),
+		url("/src/fonts/HelveticaNowDisplay-Bold.woff") format("woff"),
+		url("/src/fonts/HelveticaNowDisplay-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Aplica la fuente al cuerpo o a cualquier otro selector */
+body {
+	font-family: "Helvetica Now Display", sans-serif;
+}

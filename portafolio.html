@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
@@ -8,38 +8,57 @@
   <link href="src/styles.css" rel="stylesheet" />
   <title>TitanGruas-Portafolio</title>
   <link rel="icon" href="src/titansvg.svg" />
-    <style>
-      .video-mobile {
-        @media (orientation: portrait) {
-          width: auto !important;
-          height: 100% !important;
-          transform: scale(1.15) translateX(-5%);
-        }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  :-webkit-full-screen video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+  .video-mobile {
+    @media (max-aspect-ratio: 9/16) {
+
+      /* Detecta pantalla vertical */
+      video {
+        height: 100vh !important;
+        width: auto !important;
+        transform: translateX(-50%) translateY(0) scale(1.2);
+        left: 50%;
+        position: absolute;
       }
-    </style>
+    }
+  }
+</style>
 </head>
 
 <body class="text-white relative min-h-screen overflow-hidden">
   <div class="fixed inset-0 w-screen h-screen z-0 overflow-hidden">
-    <video class="w-full h-full object-cover scale-[1.1] video-mobile" autoplay loop muted playsinline
-      poster="src/poster.jpg">
-      <source src="src/Portafolio_compressed.mp4" type="video/mp4" />
-      <img src="src/poster.jpg" alt="Background" class="w-full h-full object-cover" />
+    <video id="videoPlayer" class="w-full h-full object-cover scale-[1]" autoplay loop muted playsinline webkit-playsinline>
+      <source id="videoSource" src="src/AutozoneHiab.mp4" type="video/mp4" />
     </video>
+    <!-- Botones de navegación -->
+    <button id="prevBtn"
+      class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button id="nextBtn"
+      class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70">
+      <i class="fas fa-chevron-right"></i>
+    </button>
   </div>
   <!-- Header -->
   <header class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-sm shadow-lg">
     <div class="container mx-auto px-4 flex justify-between items-center h-20">
       <!-- Logo -->
       <div class="w-10 md:w-48">
-        <img src="src/titansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-53px]" />
+        <img src="src/titansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-65px]" />
       </div>
       <!-- Menú Desktop -->
       <nav class="hidden lg:flex items-center space-x-6 text-lg">
         <a href="index.html" class="hover:text-[#00f900] transition-all duration-200">Inicio</a>
         <a href="gruas.html" class="hover:text-[#00f900] transition-all duration-200">Grúas</a>
-        <a href="portafolio.html" class="hover:text-[#00f900] transition-all duration-200 underline">Portafolio</a>
-        <a href="nosotros.html" class="hover:text-[#00f900] transition-all duration-200">Nosotros</a>
+        <a href="portafolio.html"
+          class="hover:text-[#00f900] transition-all duration-200 underline text-[#00f900]">Portafolio</a>
         <div class="flex items-center space-x-4 ml-4">
           <a href="#" class="hover:opacity-75 transition-opacity">
             <img src="src/facebook-social-logo.svg" alt="Facebook" class="w-6" />
@@ -55,11 +74,11 @@
             <div class="border border-white rounded-full text-xs px-3 py-1">443 169 3581</div>
           </div>
         </div>
-        </nav>
-        <!-- Botón Menú Mobile -->
-        <button id="menu-toggle" class="lg:hidden p-2 hover:opacity-75">
-          <img src="src/menu.svg" alt="Menú móvil" class="w-7" />
-        </button>
+      </nav>
+      <!-- Botón Menú Mobile -->
+      <button id="menu-toggle" class="lg:hidden p-2 hover:opacity-75">
+        <img src="src/menu.svg" alt="Menú móvil" class="w-7" />
+      </button>
       </div>
     <!-- Menú Mobile -->
     <div id="mobile-menu" class="lg:hidden absolute top-full w-full bg-black/90 backdrop-blur-md hidden shadow-xl">
@@ -67,8 +86,7 @@
         <div class="flex flex-col items-center space-y-4">
           <a href="index.html" class="w-full text-center py-2 hover:text-[#00f900]">Inicio</a>
           <a href="gruas.html" class="w-full text-center py-2 hover:text-[#00f900]">Grúas</a>
-          <a href="portafolio.html" class="w-full text-center py-2 hover:text-[#00f900]">Portafolio</a>
-          <a href="nosotros.html" class="w-full text-center py-2 hover:text-[#00f900]">Nosotros</a>
+          <a href="portafolio.html" class="w-full text-center py-2 hover:text-[#00f900] text-[#00f900]">Portafolio</a>
           <div class="flex space-x-4 mt-4">
             <a href="#" class="hover:opacity-75">
               <img src="src/facebook-social-logo.svg" alt="Facebook" class="w-8" />
@@ -90,6 +108,7 @@
   </header>
 
   <!-- Texto principal -->
+  <!--
   <main class="relative z-10 pt-24 md:pt-32 pb-20 px-4 min-h-screen flex items-center">
     <div class="container mx-auto">
       <p class="text-lg md:text-xl">Portafolio</p>
@@ -99,52 +118,107 @@
       </h1>
     </div>
   </main>
-
-  <div class="w-16 absolute bottom-10 right-3">
-    Seven days Morelia, Mich. </div>
-  <!-- Footer -->
-  <footer class="fixed bottom-0 w-full bg-black/40 z-50 backdrop-blur-sm">
-    <div class="container mx-auto px-4 flex justify-end items-end">
-      <img src="src/titansvg.svg" alt="Logo pequeño" class="w-16 absolute bottom-0 left-0 mb-[-20px]" />
-      <div class="flex items-center space-x-4">
-        <a href="#" class="hover:opacity-75 transition-opacity">
-          <img src="src/facebook-social-logo.svg" alt="Facebook" class="w-6" />
-        </a>
-        <a href="#" class="hover:opacity-75 transition-opacity">
-          <img src="src/ig.svg" alt="Instagram" class="w-9" />
-        </a>
-        <a href="#" class="hover:opacity-75 transition-opacity">
-          <img src="src/whatsapp.svg" alt="WhatsApp" class="w-6" />
-        </a>
-      </div>
-    </div>
-  </footer>
+  -->
 
   <!-- Script para el menú hamburguesa -->
   <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-        const video = document.querySelector('video');
+          const menuToggle = document.getElementById('menu-toggle');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const videoPlayer = document.getElementById('videoPlayer');
+
         // Menú móvil
         menuToggle.addEventListener('click', (e) => {
           e.stopPropagation();
-      mobileMenu.classList.toggle('hidden');
-    });
+          mobileMenu.classList.toggle('hidden');
+        });
+
+          // Función para detectar si es un dispositivo móvil
+          function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+          }
+          function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          }
+
+          // Activar pantalla completa en móviles
+          if (isMobileDevice()) {
+            videoPlayer.addEventListener('click', () => {
+              if (isIOS()) {
+                // Método específico para iOS
+                videoPlayer.webkitEnterFullscreen();
+              } else {
+                // Método estándar para otros dispositivos
+                if (videoPlayer.requestFullscreen) {
+                  videoPlayer.requestFullscreen();
+                }
+              }
+            });
+          }
+
         // Ajuste de video
         function adjustVideo() {
           if (window.innerHeight > window.innerWidth) {
-            video.classList.add('video-mobile');
+            videoPlayer.classList.add('video-mobile');
           } else {
-            video.classList.remove('video-mobile');
+            videoPlayer.classList.remove('video-mobile');
           }
         }
+
         // Event listeners
         window.addEventListener('resize', adjustVideo);
         window.addEventListener('orientationchange', adjustVideo);
         document.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         adjustVideo();
       });
+
+  // Cambiar videos
+  document.addEventListener("DOMContentLoaded", () => {
+    const videos = [
+      "src/AutozoneHiab.mp4",
+      "src/Innvictus.mp4",
+      "src/Jardinero.mp4",
+      "src/Oxxo.mp4",
+      "src/Puente.mp4",
+      "src/SevenDays.mp4",
+      "src/Tiendas3B.mp4",
+    ];
+
+    let currentVideo = 0;
+    const videoPlayer = document.getElementById("videoPlayer");
+    const videoSource = document.getElementById("videoSource"); // Usar ID correcto
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function changeVideo(direction) {
+      currentVideo = (currentVideo + direction + videos.length) % videos.length;
+      videoSource.src = videos[currentVideo];
+      videoPlayer.load();
+      videoPlayer.play();
+    }
+
+    // Eventos para desktop y móvil
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Evitar que el evento llegue al video
+      changeVideo(-1);
+    });
+
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      changeVideo(1);
+    });
+
+    // Eventos táctiles para móviles
+    prevBtn.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      changeVideo(-1);
+    });
+
+    nextBtn.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      changeVideo(1);
+    });
+  });
   </script>
 </body>
 

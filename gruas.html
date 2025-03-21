@@ -36,23 +36,22 @@
       }
     }
   </style>
-  </head>
-  
-  <body class="text-black relative min-h-screen">
-    <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg">
-      <div class="container max-w-none pl-0 pr-4 flex justify-between items-center h-20">
-        <!-- Logo alineado a la izquierda -->
-        <div class="w-10 md:w-48">
-          <img src="src/titansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-53px]" />
+</head>
+
+<body class="text-black relative overflow-x-hidden">
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg">
+    <div class="container max-w-none pl-0 pr-4 flex justify-between items-center h-20">
+      <!-- Logo alineado a la izquierda -->
+      <div class="w-10 md:w-48">
+        <img src="src/titansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-65px]" />
       </div>
-  
+
       <!-- Menú Desktop -->
       <nav class="hidden lg:flex items-center space-x-6 text-lg">
         <a href="index.html" class="hover:text-[#00f900] transition-all duration-200">Inicio</a>
-        <a href="gruas.html" class="hover:text-[#00f900] transition-all duration-200 underline">Grúas</a>
+        <a href="gruas.html" class="hover:text-[#00f900] transition-all duration-200 underline text-[#00f900]">Grúas</a>
         <a href="portafolio.html" class="hover:text-[#00f900] transition-all duration-200">Portafolio</a>
-        <a href="nosotros.html" class="hover:text-[#00f900] transition-all duration-200">Nosotros</a>
         <div class="flex items-center space-x-4 ml-4">
           <a href="#" class="hover:opacity-75 transition-opacity">
             <img src="src/facebook-social-logo_black.svg" alt="Facebook" class="w-6" />
@@ -69,21 +68,20 @@
           </div>
         </div>
       </nav>
-  
+
       <!-- Botón Menú Mobile -->
       <button id="menu-toggle" class="lg:hidden p-2 hover:opacity-75">
         <img src="src/menu_black.svg" alt="Menú móvil" class="w-7" />
       </button>
     </div>
-  
+
     <!-- Menú Mobile -->
     <div id="mobile-menu" class="lg:hidden absolute top-full w-full bg-white/90 backdrop-blur-md hidden shadow-xl">
       <div class="container mx-auto px-4 py-4">
         <div class="flex flex-col items-center space-y-4 text-black">
           <a href="index.html" class="w-full text-center py-2 hover:text-[#00f900]">Inicio</a>
-          <a href="gruas.html" class="w-full text-center py-2 hover:text-[#00f900]">Grúas</a>
+          <a href="gruas.html" class="w-full text-center py-2 hover:text-[#00f900] text-[#00f900]">Grúas</a>
           <a href="portafolio.html" class="w-full text-center py-2 hover:text-[#00f900]">Portafolio</a>
-          <a href="nosotros.html" class="w-full text-center py-2 hover:text-[#00f900]">Nosotros</a>
           <div class="flex space-x-4 mt-4">
             <a href="#" class="hover:opacity-75">
               <img src="src/facebook-social-logo_black.svg" alt="Facebook" class="w-8" />
@@ -100,27 +98,27 @@
             <div class="phone-number border border-black rounded-full text-xs px-4 py-1">443 169 3581</div>
           </div>
         </div>
-        </div>
-        </div>
+      </div>
+      </div>
   </header>
-  
+
   <!-- Contenido Principal -->
-  <main class="relative z-10 pt-20 px-4 min-h-screen">
-    <div class="container mx-auto">
-      <div class="lg:text-center mb-4">
+  <main class="relative z-10 pt-20 px-4 overflow-hidden">
+    <div class="container">
+      <div class="lg:text-center lg:inline hidden mb-4">
         <h1 class="text-[#00f900] text-4xl md:text-6xl font-bold mb-2">Grúas</h1>
         <p class="text-lg md:text-xl">EL PODER DE LOS TITANES EN CADA MANIOBRA</p>
       </div>
 
-      <div class="flex lg:flex-row flex-col-reverse items-center justify-between gap-8">
+      <div class="flex lg:flex-row flex-col-reverse items-center justify-between">
         <!-- Imagen -->
         <div class="lg:w-1/2 w-full overflow-hidden rounded-xl shadow-xl">
           <img id="image" src="src/PORTADA.png" alt="Grúas Titan"
-            class="w-full h-[400px] md:h-[550px] object-cover slide-content" loading="lazy" />
+            class="w-full h-[250px]  md:h-[550px] object-cover slide-content" loading="lazy" />
         </div>
 
         <!-- Texto -->
-        <div class="lg:w-1/2 flex flex-col items-start justify-center space-y-6 lg:px-6">
+        <div class="lg:w-1/2 flex flex-col items-start justify-center space-y-4 lg:space-y-6 lg:px-6">
           <h1 id="title" class="text-4xl md:text-5xl font-bold slide-content">Grúas titán de 12 y 15 toneladas</h1>
           <p id="text" class="text-xl md:text-2xl text-gray-700 slide-content">
             Perfectas para trabajos de construcción, montaje de estructuras, carga y descarga de materiales, y mucho
@@ -131,8 +129,8 @@
           </div>
         </div>
       </div>
-      </div>
-      </main>
+    </div>
+    </main>
 
   <!-- Footer -->
   <footer class="fixed bottom-0 w-full bg-black/40 z-50 backdrop-blur-sm">
@@ -190,41 +188,55 @@
         }
             });
 
-              // Slider
+              function lockScroll() {
+                document.body.classList.add("overflow-hidden");
+              }
+
+              function unlockScroll() {
+                document.body.classList.remove("overflow-hidden");
+              }
+
               function changeSlide(direction) {
                 if (isAnimating) return;
                 isAnimating = true;
+              lockScroll(); // Bloquea el scroll durante la animación
 
               const elements = document.querySelectorAll('.slide-content');
-              elements.forEach(el => el.style.opacity = '0');
+              elements.forEach(el => el.classList.add("opacity-0", "transition-opacity", "duration-500"));
 
-        setTimeout(() => {
-          currentIndex = (direction === 'next')
-            ? (currentIndex + 1) % images.length
-            : (currentIndex - 1 + images.length) % images.length;
+              setTimeout(() => {
+                currentIndex = (direction === 'next')
+                  ? (currentIndex + 1) % images.length
+                  : (currentIndex - 1 + images.length) % images.length;
 
-          document.getElementById('image').src = images[currentIndex].src;
-          document.getElementById('text').textContent = images[currentIndex].text;
-          document.getElementById('title').textContent = images[currentIndex].title;
+                document.getElementById('image').src = images[currentIndex].src;
+                document.getElementById('text').textContent = images[currentIndex].text;
+                document.getElementById('title').textContent = images[currentIndex].title;
 
-          elements.forEach(el => el.style.opacity = '1');
-          isAnimating = false;
-        }, 500);
-      }
+                elements.forEach(el => el.classList.remove("opacity-0"));
+                isAnimating = false;
+                unlockScroll(); // Desbloquea el scroll después de la animación
+              }, 500);
+            }
+
 
               // Eventos
-              window.addEventListener('wheel', (e) => {
-                if (e.deltaY > 0) changeSlide('next');
-                else changeSlide('prev');
-      });
+              window.addEventListener("wheel", (e) => {
+                e.preventDefault(); // Evita el scroll al hacer scroll
+                if (e.deltaY > 0) changeSlide("next");
+                else changeSlide("prev");
+              }, { passive: false });
 
       let touchStartY = 0;
-              window.addEventListener('touchstart', e => touchStartY = e.touches[0].clientY);
-              window.addEventListener('touchend', e => {
+              window.addEventListener("touchstart", (e) => touchStartY = e.touches[0].clientY);
+              window.addEventListener("touchend", (e) => {
                 const touchEndY = e.changedTouches[0].clientY;
                 const diff = touchStartY - touchEndY;
-                if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 'next' : 'prev');
-      });
+              if (Math.abs(diff) > 50) {
+                e.preventDefault(); // Evita el scroll al deslizar
+                changeSlide(diff > 0 ? "next" : "prev");
+              }
+            }, { passive: false });
     });
   </script>
 </body>

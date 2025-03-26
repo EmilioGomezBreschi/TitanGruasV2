@@ -32,10 +32,12 @@
 </head>
 
 <body class="text-white relative min-h-screen overflow-hidden">
-  <div class="fixed inset-0 w-screen h-screen z-0 overflow-hidden">
-    <video id="videoPlayer" class="w-full h-full object-cover scale-[1]" autoplay loop muted playsinline webkit-playsinline>
-      <source id="videoSource" src="src/AutozoneHiab.mp4" type="video/mp4" />
-    </video>
+<div class="fixed inset-0 w-screen h-screen z-0 overflow-hidden"> <!-- Cambiado h-screen a h-[100dvh] -->
+  <video id="videoPlayer"
+    class="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-[30%] w-full h-full md:object-fill object-cover md:scale-100 scale-100"
+    autoplay loop muted playsinline webkit-playsinline>
+    <source id="videoSource" src="src/AutozoneHiab.mp4" type="video/mp4" />
+  </video>
     <!-- Botones de navegación -->
     <button id="prevBtn"
       class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70">

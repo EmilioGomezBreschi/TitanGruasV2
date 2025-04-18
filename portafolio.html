@@ -3,6 +3,7 @@
 <!-- 
 TODO: Poner el link de whatsapp
 -->
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,21 +36,27 @@ TODO: Poner el link de whatsapp
 </head>
 
 <body class="text-white relative min-h-screen overflow-hidden">
-  <div class="fixed inset-0 w-screen h-screen z-0 overflow-hidden"> <!-- Cambiado h-screen a h-[100dvh] -->
+  <div class="fixed inset-0 w-screen h-[100dvh] z-0 overflow-hidden">
     <video id="videoPlayer"
       class="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-[30%] w-full h-full md:object-fill object-cover md:scale-100 scale-100"
-      autoplay loop muted playsinline webkit-playsinline>
-      <source id="videoSource" src="src/AutozoneHiab.mp4" type="video/mp4" />
+      autoplay loop muted playsinline webkit-playsinline preload="metadata" poster="src/video-poster.webp">
+      <source id="videoSource" src="src/AutozoneHiab.webm" type="video/webm">
+      <source src="src/AutozoneHiab.mp4" type="video/mp4">
     </video>
-    <!-- Botones de navegación -->
-    <button id="prevBtn"
-      class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-    <button id="nextBtn"
-      class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70">
-      <i class="fas fa-chevron-right"></i>
-    </button>
+    <div class="absolute inset-0 flex justify-between items-center px-4">
+      <button id="prevBtn" aria-label="Video anterior"
+        class="bg-black/50 p-3 rounded-full hover:bg-black/70 transition-opacity backdrop-blur-sm">
+        <svg aria-hidden="true" class="w-6 h-6">
+          <use href="#chevron-left"></use>
+        </svg>
+      </button>
+      <button id="nextBtn" aria-label="Siguiente video"
+        class="bg-black/50 p-3 rounded-full hover:bg-black/70 transition-opacity backdrop-blur-sm">
+        <svg aria-hidden="true" class="w-6 h-6">
+          <use href="#chevron-right"></use>
+        </svg>
+      </button>
+      </div>
   </div>
   <!-- Header -->
   <header class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-sm shadow-lg">
@@ -129,104 +136,79 @@ TODO: Poner el link de whatsapp
 
   <!-- Script para el menú hamburguesa -->
   <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const menuToggle = document.getElementById('menu-toggle');
-          const mobileMenu = document.getElementById('mobile-menu');
-          const videoPlayer = document.getElementById('videoPlayer');
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        // Menú móvil
-        menuToggle.addEventListener('click', (e) => {
-          e.stopPropagation();
-          mobileMenu.classList.toggle('hidden');
-        });
+      const toggleMenu = () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.setAttribute('aria-hidden', isExpanded);
+      };
 
-          // Función para detectar si es un dispositivo móvil
-          function isMobileDevice() {
-            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-          }
-          function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-          }
-
-          // Activar pantalla completa en móviles
-          if (isMobileDevice()) {
-            videoPlayer.addEventListener('click', () => {
-              if (isIOS()) {
-                // Método específico para iOS
-                videoPlayer.webkitEnterFullscreen();
-              } else {
-                // Método estándar para otros dispositivos
-                if (videoPlayer.requestFullscreen) {
-                  videoPlayer.requestFullscreen();
-                }
-              }
-            });
-          }
-
-        // Ajuste de video
-        function adjustVideo() {
-          if (window.innerHeight > window.innerWidth) {
-            videoPlayer.classList.add('video-mobile');
-          } else {
-            videoPlayer.classList.remove('video-mobile');
-          }
-        }
-
-        // Event listeners
-        window.addEventListener('resize', adjustVideo);
-        window.addEventListener('orientationchange', adjustVideo);
-        document.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        adjustVideo();
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
       });
 
-          // Cambiar videos
-          document.addEventListener("DOMContentLoaded", () => {
-            const videos = [
-              "src/AutozoneHiab.mp4",
-              "src/Innvictus.mp4",
-              "src/Jardinero.mp4",
-              "src/Oxxo.mp4",
-              "src/Puente.mp4",
-              "src/SevenDays.mp4",
-              "src/Tiendas3B.mp4",
-            ];
+      const videos = [
+        { webm: 'src/optimized-AutozoneHiab.webm', mp4: 'src/AutozoneHiab.mp4' },
+        { webm: 'src/optimized-Innvictus.webm', mp4: 'src/Innvictus.mp4' },
+        { webm: 'src/optimized-Jardinero.webm', mp4: 'src/Jardinero.mp4' },
+        { webm: 'src/optimized-Oxxo.webm', mp4: 'src/Oxxo.mp4' },
+        { webm: 'src/optimized-Puente.webm', mp4: 'src/Puente.mp4' },
+        { webm: 'src/optimized-SevenDays.webm', mp4: 'src/SevenDays.mp4' },
+        { webm: 'src/optimized-Tiendas3B.webm', mp4: 'src/Tiendas3B.mp4' }
+      ];
 
-          let currentVideo = 0;
-          const videoPlayer = document.getElementById("videoPlayer");
-          const videoSource = document.getElementById("videoSource"); // Usar ID correcto
-          const prevBtn = document.getElementById("prevBtn");
-          const nextBtn = document.getElementById("nextBtn");
+      let currentVideo = 0;
+      const videoPlayer = document.getElementById('videoPlayer');
 
-          function changeVideo(direction) {
-            currentVideo = (currentVideo + direction + videos.length) % videos.length;
-            videoSource.src = videos[currentVideo];
-            videoPlayer.load();
-            videoPlayer.play();
-          }
+      const changeVideo = (direction) => {
+        currentVideo = (currentVideo + direction + videos.length) % videos.length;
 
-          // Eventos para desktop y móvil
-          prevBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Evitar que el evento llegue al video
-            changeVideo(-1);
-          });
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.as = 'video';
+        preloadLink.href = videos[currentVideo].webm;
+        document.head.appendChild(preloadLink);
 
-          nextBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            changeVideo(1);
-          });
+        videoPlayer.innerHTML = `
+            <source src="${videos[currentVideo].webm}" type="video/webm">
+            <source src="${videos[currentVideo].mp4}" type="video/mp4">
+          `;
+        videoPlayer.load();
+        videoPlayer.play().catch(() => { });
+      };
 
-          // Eventos táctiles para móviles
-          prevBtn.addEventListener("pointerdown", (e) => {
-            e.preventDefault();
-            changeVideo(-1);
-          });
+      const handleNavigation = (e, direction) => {
+        e.preventDefault();
+        e.stopPropagation();
+        changeVideo(direction);
+      };
 
-          nextBtn.addEventListener("pointerdown", (e) => {
-            e.preventDefault();
-            changeVideo(1);
-          });
-        });
+      document.getElementById('prevBtn').addEventListener('click', (e) => handleNavigation(e, -1));
+      document.getElementById('nextBtn').addEventListener('click', (e) => handleNavigation(e, 1));
+
+      const handleVideoResize = () => {
+        const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+        videoPlayer.classList.toggle('object-cover', !isPortrait);
+        videoPlayer.classList.toggle('object-contain', isPortrait);
+      };
+
+      window.addEventListener('resize', handleVideoResize);
+      handleVideoResize();
+    });
   </script>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="chevron-left" viewBox="0 0 24 24">
+      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+    </symbol>
+    <symbol id="chevron-right" viewBox="0 0 24 24">
+      <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+    </symbol>
+  </svg>
 </body>
 
 </html>

@@ -6,43 +6,10 @@ TODO: Poner el link de whatsapp
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link href="/src/output.css" rel="stylesheet" />
-  <link href="/src/styles.css" rel="stylesheet" />
+  <link href="src/output.css" rel="stylesheet" />
+  <link href="src/styles.css" rel="stylesheet" />
   <title>TitanGruas - Inicio</title>
   <link rel="icon" href="src/Newtitansvg.ico" />
-  <style>
-    .video-container {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .video-content {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .video-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.1);
-    }
-
-    .nosotros-section {
-      background: white;
-      color: black;
-      padding: 4rem 1rem;
-      position: relative;
-      z-index: 2;
-    }
-  </style>
 </head>
 
 <body class="text-white overflow-auto">
@@ -109,10 +76,11 @@ TODO: Poner el link de whatsapp
   </header>
 
   <!-- Sección del Video -->
-  <div class="video-container md:mb-11">
-    <div class="video-content">
-      <video class="video-background" autoplay loop muted playsinline>
-        <source src="src/InnovaLandingIntro.mp4" type="video/mp4" />
+  <div class="h-screen relative overflow-hidden md:mb-11">
+    <div class="relative z-[1] h-screen flex items-center">
+      <video class="absolute top-0 left-0 w-full h-full object-cover transform scale-110 md:scale-100 origin-center"
+        autoplay loop muted playsinline>
+        <source src="src/optimized-InnovaLandingIntro.webm" type="video/webm" />
       </video>
       <main class="container mx-auto px-4 relative z-20 text-white pt-24">
         <h1 class="text-3xl md:text-5xl font-bold mb-4">
@@ -125,7 +93,7 @@ TODO: Poner el link de whatsapp
   </div>
   
   <!-- Sección Nosotros -->
-  <section class="nosotros-section">
+  <section class="bg-white text-black px-4 py-16 relative z-[2]">
     <div class="container mx-auto">
       <div class="lg:text-center mb-12">
         <h1 class="text-[#00f900] text-4xl md:text-6xl font-bold mb-2">Nosotros</h1>

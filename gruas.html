@@ -43,7 +43,7 @@ TODO: Poner el link de whatsapp
 <body class="text-black relative overflow-x-hidden">
   <!-- Header -->
   <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg">
-    <div class="container max-w-none pl-0 pr-4 flex justify-between items-center h-20">
+    <div class="container max-w-none px-4 flex justify-between items-center h-20">
       <!-- Logo alineado a la izquierda -->
       <div class="w-10 md:w-48">
         <img src="src/Newtitansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-65px]" />
@@ -114,11 +114,12 @@ TODO: Poner el link de whatsapp
         <p class="text-lg md:text-xl">EL PODER DE LOS TITANES EN CADA MANIOBRA</p>
       </div>
 
-      <div class="flex lg:flex-row flex-col-reverse items-center justify-between">
+      <div class="flex lg:flex-row flex-col-reverse items-center justify-between gap-8">
         <!-- Imagen -->
-        <div class="lg:w-1/2 w-full overflow-hidden rounded-xl shadow-xl">
-          <img id="image" src="src/PORTADA.png" alt="Grúas Titan"
-            class="w-full h-[250px]  md:h-[550px] object-cover slide-content" loading="lazy" />
+        <div class="lg:w-1/2 w-full overflow-hidden rounded-xl shadow-xl aspect-[4/3]">
+          <img id="image" src="src/PORTADA.webp" alt="Grúas Titan"
+            class="w-full h-full object-cover transition-opacity duration-500" loading="lazy" width="800" height="600"
+            style="background: url('data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==') center/cover" />
         </div>
 
         <!-- Texto -->
@@ -157,26 +158,58 @@ TODO: Poner el link de whatsapp
   </footer>
 
   <script>
-              document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
               const menuToggle = document.getElementById('menu-toggle');
               const mobileMenu = document.getElementById('mobile-menu');
       const images = [
         {
-          src: 'src/PORTADA.png',
+          src: 'src/PORTADA.webp',
+          webp: 'src/PORTADA.webp',
           text: 'Perfectas para trabajos de construcción, montaje de estructuras, carga y descarga de materiales, y mucho más.',
           title: 'Grúas titán de 12 y 15 toneladas'
         },
         {
-          src: 'src/montacargas.png',
+          src: 'src/montacargas.webp',
+          webp: 'src/montacargas.webp',
           text: 'Diseñado para operar en entornos industriales, almacenes y centros logísticos, este montacargas ofrece un rendimiento óptimo, estabilidad y facilidad de maniobra.',
           title: 'Montacargas de 4.5 toneladas'
         },
         {
-          src: 'src/Grua_Pettibone.jpeg',
+          src: 'src/Grua_Pettibone.webp',
+          webp: 'src/Grua_Pettibone.webp',
           text: 'Diseñadas para la construcción, la industria pesada y aplicaciones especializadas, estas grúas ofrecen una combinación perfecta de potencia y maniobrabilidad, asegurando eficiencia en cada operación.',
           title: 'Grúas Pettibone'
         }
       ];
+
+        // Precarga de imágenes
+        const preloadImages = () => {
+          images.forEach(img => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = img.webp;
+            document.head.appendChild(link);
+          });
+        };
+
+        // Carga diferida para móviles
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+              }
+            });
+          });
+
+          document.querySelectorAll('img[data-src]').forEach(img => {
+            observer.observe(img);
+          });
+        }
 
       let currentIndex = 0;
               let isAnimating = false;

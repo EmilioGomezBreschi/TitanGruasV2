@@ -1,283 +1,465 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 
-TODO: Poner el link de whatsapp
--->
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link href="src/output.css" rel="stylesheet" />
-  <link href="src/styles.css" rel="stylesheet" />
-  <title>TitanGrúas - Grúas</title>
-  <link rel="icon" href="src/Newtitansvg.ico" />
-  <style>
-    .slide-content {
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<link
+			href="src/output.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="src/styles.css"
+			rel="stylesheet"
+		/>
+		<title>TitanGrúas - Grúas</title>
+		<link
+			rel="icon"
+			href="src/Newtitansvg.ico"
+		/>
+		<style>
+			.slide-content {
+				transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+			}
 
-    .swipe-indicator {
-      animation: bounce 2s infinite;
-    }
+			.swipe-indicator {
+				animation: bounce 2s infinite;
+			}
 
-    @keyframes bounce {
+			@keyframes bounce {
+				0%,
+				20%,
+				50%,
+				80%,
+				100% {
+					transform: translateY(0);
+				}
 
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
-        transform: translateY(0);
-      }
+				40% {
+					transform: translateY(-20px);
+				}
 
-      40% {
-        transform: translateY(-20px);
-      }
+				60% {
+					transform: translateY(-10px);
+				}
+			}
+		</style>
+	</head>
 
-      60% {
-        transform: translateY(-10px);
-      }
-    }
-  </style>
-</head>
+	<body class="text-black relative overflow-x-hidden">
+		<!-- Header -->
+		<header
+			class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg"
+		>
+			<div
+				class="container max-w-none px-4 flex justify-between items-center h-20"
+			>
+				<!-- Logo alineado a la izquierda -->
+				<div class="w-10 md:w-48">
+					<img
+						src="src/Newtitansvg.svg"
+						alt="Logo TitanGrúas"
+						class="w-56 h-56 absolute top-0 left-0 mt-[-65px]"
+					/>
+				</div>
 
-<body class="text-black relative overflow-x-hidden">
-  <!-- Header -->
-  <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg">
-    <div class="container max-w-none px-4 flex justify-between items-center h-20">
-      <!-- Logo alineado a la izquierda -->
-      <div class="w-10 md:w-48">
-        <img src="src/Newtitansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-65px]" />
-      </div>
+				<!-- Menú Desktop -->
+				<nav class="hidden lg:flex items-center space-x-6 text-lg">
+					<a
+						href="index.html"
+						class="hover:text-[#00f900] transition-all duration-200"
+						>Inicio</a
+					>
+					<a
+						href="gruas.html"
+						class="hover:text-[#00f900] transition-all duration-200 underline text-[#00f900]"
+						>Grúas</a
+					>
+					<a
+						href="portafolio.html"
+						class="hover:text-[#00f900] transition-all duration-200"
+						>Portafolio</a
+					>
+					<div class="flex items-center space-x-4 ml-4">
+						<a
+							href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr"
+							target="_blank"
+							class="hover:opacity-75 transition-opacity"
+						>
+							<img
+								src="src/facebook-social-logo_black.svg"
+								alt="Facebook"
+								class="w-6"
+							/>
+						</a>
+						<a
+							href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng=="
+							target="_blank"
+							class="hover:opacity-75 transition-opacity"
+						>
+							<img
+								src="src/ig_black.svg"
+								alt="Instagram"
+								class="w-10"
+							/>
+						</a>
+						<a
+							href="https://w.app/zz5jth"
+							class="hover:opacity-75 transition-opacity"
+							target="_blank"
+						>
+							<img
+								src="src/whatsapp_black.svg"
+								alt="WhatsApp"
+								class="w-6"
+							/>
+						</a>
+						<div class="flex space-x-2">
+							<div
+								class="phone-number border border-black rounded-full text-xs px-3 py-1"
+							>
+								443 107 4582
+							</div>
+							<div
+								class="phone-number border border-black rounded-full text-xs px-3 py-1"
+							>
+								443 169 3581
+							</div>
+						</div>
+					</div>
+				</nav>
 
-      <!-- Menú Desktop -->
-      <nav class="hidden lg:flex items-center space-x-6 text-lg">
-        <a href="index.html" class="hover:text-[#00f900] transition-all duration-200">Inicio</a>
-        <a href="gruas.html" class="hover:text-[#00f900] transition-all duration-200 underline text-[#00f900]">Grúas</a>
-        <a href="portafolio.html" class="hover:text-[#00f900] transition-all duration-200">Portafolio</a>
-        <div class="flex items-center space-x-4 ml-4">
-          <a href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr" target="_blank"
-            class="hover:opacity-75 transition-opacity">
-            <img src="src/facebook-social-logo_black.svg" alt="Facebook" class="w-6" />
-          </a>
-          <a href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng==" target="_blank"
-            class="hover:opacity-75 transition-opacity">
-            <img src="src/ig_black.svg" alt="Instagram" class="w-10" />
-          </a>
-          <a href="https://w.app/zz5jth" class="hover:opacity-75 transition-opacity" target="_blank">
-            <img src="src/whatsapp_black.svg" alt="WhatsApp" class="w-6" />
-          </a>
-          <div class="flex space-x-2">
-            <div class="phone-number border border-black rounded-full text-xs px-3 py-1">443 107 4582</div>
-            <div class="phone-number border border-black rounded-full text-xs px-3 py-1">443 169 3581</div>
-          </div>
-        </div>
-      </nav>
+				<!-- Botón Menú Mobile -->
+				<button
+					id="menu-toggle"
+					class="lg:hidden p-2 hover:opacity-75"
+				>
+					<img
+						src="src/menu_black.svg"
+						alt="Menú móvil"
+						class="w-7"
+					/>
+				</button>
+			</div>
 
-      <!-- Botón Menú Mobile -->
-      <button id="menu-toggle" class="lg:hidden p-2 hover:opacity-75">
-        <img src="src/menu_black.svg" alt="Menú móvil" class="w-7" />
-      </button>
-    </div>
+			<!-- Menú Mobile -->
+			<div
+				id="mobile-menu"
+				class="lg:hidden absolute top-full w-full bg-white/90 backdrop-blur-md hidden shadow-xl"
+			>
+				<div class="container mx-auto px-4 py-4">
+					<div class="flex flex-col items-center space-y-4 text-black">
+						<a
+							href="index.html"
+							class="w-full text-center py-2 hover:text-[#00f900]"
+							>Inicio</a
+						>
+						<a
+							href="gruas.html"
+							class="w-full text-center py-2 hover:text-[#00f900] text-[#00f900]"
+							>Grúas</a
+						>
+						<a
+							href="portafolio.html"
+							class="w-full text-center py-2 hover:text-[#00f900]"
+							>Portafolio</a
+						>
+						<div class="flex space-x-4 mt-4">
+							<a
+								href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr"
+								class="hover:opacity-75"
+							>
+								<img
+									src="src/facebook-social-logo_black.svg"
+									alt="Facebook"
+									class="w-8"
+								/>
+							</a>
+							<a
+								href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng=="
+								class="hover:opacity-75"
+							>
+								<img
+									src="src/ig_black.svg"
+									alt="Instagram"
+									class="w-10"
+								/>
+							</a>
+							<a
+								href="https://w.app/zz5jth"
+								class="hover:opacity-75"
+							>
+								<img
+									src="src/whatsapp_black.svg"
+									alt="WhatsApp"
+									class="w-8"
+								/>
+							</a>
+						</div>
+						<div class="flex flex-col space-y-2 w-full items-center mt-4">
+							<div
+								class="phone-number border border-black rounded-full text-xs px-4 py-1"
+							>
+								443 107 4582
+							</div>
+							<div
+								class="phone-number border border-black rounded-full text-xs px-4 py-1"
+							>
+								443 169 3581
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-    <!-- Menú Mobile -->
-    <div id="mobile-menu" class="lg:hidden absolute top-full w-full bg-white/90 backdrop-blur-md hidden shadow-xl">
-      <div class="container mx-auto px-4 py-4">
-        <div class="flex flex-col items-center space-y-4 text-black">
-          <a href="index.html" class="w-full text-center py-2 hover:text-[#00f900]">Inicio</a>
-          <a href="gruas.html" class="w-full text-center py-2 hover:text-[#00f900] text-[#00f900]">Grúas</a>
-          <a href="portafolio.html" class="w-full text-center py-2 hover:text-[#00f900]">Portafolio</a>
-          <div class="flex space-x-4 mt-4">
-            <a href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr" class="hover:opacity-75">
-              <img src="src/facebook-social-logo_black.svg" alt="Facebook" class="w-8" />
-            </a>
-            <a href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng==" class="hover:opacity-75">
-              <img src="src/ig_black.svg" alt="Instagram" class="w-10" />
-            </a>
-            <a href="https://w.app/zz5jth" class="hover:opacity-75">
-              <img src="src/whatsapp_black.svg" alt="WhatsApp" class="w-8" />
-            </a>
-          </div>
-          <div class="flex flex-col space-y-2 w-full items-center mt-4">
-            <div class="phone-number border border-black rounded-full text-xs px-4 py-1">443 107 4582</div>
-            <div class="phone-number border border-black rounded-full text-xs px-4 py-1">443 169 3581</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+		<!-- Contenido Principal -->
+		<main class="relative z-10 pt-20 px-4 overflow-hidden">
+			<div class="container">
+				<div class="lg:text-center lg:inline hidden mb-4">
+					<h1 class="text-[#00f900] text-4xl md:text-6xl font-bold mb-2">
+						Grúas
+					</h1>
+					<p class="text-lg md:text-xl">
+						EL PODER DE LOS TITANES EN CADA MANIOBRA
+					</p>
+				</div>
 
-  <!-- Contenido Principal -->
-  <main class="relative z-10 pt-20 px-4 overflow-hidden">
-    <div class="container">
-      <div class="lg:text-center lg:inline hidden mb-4">
-        <h1 class="text-[#00f900] text-4xl md:text-6xl font-bold mb-2">Grúas</h1>
-        <p class="text-lg md:text-xl">EL PODER DE LOS TITANES EN CADA MANIOBRA</p>
-      </div>
+				<div
+					class="flex lg:flex-row flex-col-reverse items-center justify-between gap-8"
+				>
+					<!-- Imagen -->
+					<div
+						class="lg:w-1/2 w-full overflow-hidden rounded-xl shadow-xl aspect-[4/3]"
+					>
+						<img
+							id="image"
+							src="src/PORTADA.webp"
+							alt="Grúas Titan"
+							class="w-full h-full object-cover transition-opacity duration-500"
+							loading="lazy"
+							width="800"
+							height="600"
+							style="
+								background: url('data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==')
+									center/cover;
+							"
+						/>
+					</div>
 
-      <div class="flex lg:flex-row flex-col-reverse items-center justify-between gap-8">
-        <!-- Imagen -->
-        <div class="lg:w-1/2 w-full overflow-hidden rounded-xl shadow-xl aspect-[4/3]">
-          <img id="image" src="src/PORTADA.webp" alt="Grúas Titan"
-            class="w-full h-full object-cover transition-opacity duration-500" loading="lazy" width="800" height="600"
-            style="background: url('data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==') center/cover" />
-        </div>
+					<!-- Texto -->
+					<div
+						class="lg:w-1/2 flex flex-col items-start justify-center space-y-4 lg:space-y-6 lg:px-6"
+					>
+						<h1
+							id="title"
+							class="text-4xl md:text-5xl font-bold slide-content"
+						>
+							Grúas titán de 12 y 15 toneladas
+						</h1>
+						<p
+							id="text"
+							class="text-xl md:text-2xl text-gray-700 slide-content"
+						>
+							Perfectas para trabajos de construcción, montaje de estructuras,
+							carga y descarga de materiales, y mucho más.
+						</p>
+						<div
+							class="hidden md:block swipe-indicator text-gray-500 animate-pulse"
+						>
+							↑ Desliza para ver más ↑
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 
-        <!-- Texto -->
-        <div class="lg:w-1/2 flex flex-col items-start justify-center space-y-4 lg:space-y-6 lg:px-6">
-          <h1 id="title" class="text-4xl md:text-5xl font-bold slide-content">Grúas titán de 12 y 15 toneladas</h1>
-          <p id="text" class="text-xl md:text-2xl text-gray-700 slide-content">
-            Perfectas para trabajos de construcción, montaje de estructuras, carga y descarga de materiales, y mucho
-            más.
-          </p>
-          <div class="hidden md:block swipe-indicator text-gray-500 animate-pulse">
-            ↑ Desliza para ver más ↑
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+		<!-- Footer -->
+		<footer class="fixed bottom-0 w-full bg-black z-50 backdrop-blur-sm">
+			<div class="container mx-auto px-4 flex justify-end items-end">
+				<img
+					src="src/Newtitansvg.svg"
+					alt="Logo pequeño"
+					class="w-12 absolute bottom-0 left-0 mb-[-6px]"
+				/>
+				<div class="flex items-center space-x-4">
+					<a
+						href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr"
+						target="_blank"
+						class="hover:opacity-75 transition-opacity"
+					>
+						<img
+							src="src/facebook-social-logo.svg"
+							alt="Facebook"
+							class="w-6"
+						/>
+					</a>
+					<a
+						href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng=="
+						target="_blank"
+						class="hover:opacity-75 transition-opacity"
+					>
+						<img
+							src="src/ig.svg"
+							alt="Instagram"
+							class="w-9"
+						/>
+					</a>
+					<a
+						href="https://w.app/zz5jth"
+						class="hover:opacity-75 transition-opacity"
+						target="_blank"
+					>
+						<img
+							src="src/whatsapp.svg"
+							alt="WhatsApp"
+							class="w-6"
+						/>
+					</a>
+				</div>
+			</div>
+		</footer>
 
-  <!-- Footer -->
-  <footer class="fixed bottom-0 w-full bg-black z-50 backdrop-blur-sm">
-    <div class="container mx-auto px-4 flex justify-end items-end">
-      <img src="src/Newtitansvg.svg" alt="Logo pequeño" class="w-12 absolute bottom-0 left-0 mb-[-6px]" />
-      <div class="flex items-center space-x-4">
-        <a href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr" target="_blank"
-          class="hover:opacity-75 transition-opacity">
-          <img src="src/facebook-social-logo.svg" alt="Facebook" class="w-6" />
-        </a>
-        <a href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng==" target="_blank"
-          class="hover:opacity-75 transition-opacity">
-          <img src="src/ig.svg" alt="Instagram" class="w-9" />
-        </a>
-        <a href="https://w.app/zz5jth" class="hover:opacity-75 transition-opacity" target="_blank">
-          <img src="src/whatsapp.svg" alt="WhatsApp" class="w-6" />
-        </a>
-      </div>
-    </div>
-  </footer>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const menuToggle = document.getElementById("menu-toggle");
+				const mobileMenu = document.getElementById("mobile-menu");
+				const images = [
+					{
+						src: "src/PORTADA.webp",
+						webp: "src/PORTADA.webp",
+						text: "Perfectas para trabajos de construcción, montaje de estructuras, carga y descarga de materiales, y mucho más.",
+						title: "Grúas titán de 12 y 15 toneladas",
+					},
+					{
+						src: "src/montacargas.webp",
+						webp: "src/montacargas.webp",
+						text: "Diseñado para operar en entornos industriales, almacenes y centros logísticos, este montacargas ofrece un rendimiento óptimo, estabilidad y facilidad de maniobra.",
+						title: "Montacargas de 4.5 toneladas",
+					},
+					{
+						src: "src/Grua_Pettibone.webp",
+						webp: "src/Grua_Pettibone.webp",
+						text: "Diseñadas para la construcción, la industria pesada y aplicaciones especializadas, estas grúas ofrecen una combinación perfecta de potencia y maniobrabilidad, asegurando eficiencia en cada operación.",
+						title: "Grúas Pettibone",
+					},
+				];
 
-  <script>
-        document.addEventListener('DOMContentLoaded', () => {
-              const menuToggle = document.getElementById('menu-toggle');
-              const mobileMenu = document.getElementById('mobile-menu');
-      const images = [
-        {
-          src: 'src/PORTADA.webp',
-          webp: 'src/PORTADA.webp',
-          text: 'Perfectas para trabajos de construcción, montaje de estructuras, carga y descarga de materiales, y mucho más.',
-          title: 'Grúas titán de 12 y 15 toneladas'
-        },
-        {
-          src: 'src/montacargas.webp',
-          webp: 'src/montacargas.webp',
-          text: 'Diseñado para operar en entornos industriales, almacenes y centros logísticos, este montacargas ofrece un rendimiento óptimo, estabilidad y facilidad de maniobra.',
-          title: 'Montacargas de 4.5 toneladas'
-        },
-        {
-          src: 'src/Grua_Pettibone.webp',
-          webp: 'src/Grua_Pettibone.webp',
-          text: 'Diseñadas para la construcción, la industria pesada y aplicaciones especializadas, estas grúas ofrecen una combinación perfecta de potencia y maniobrabilidad, asegurando eficiencia en cada operación.',
-          title: 'Grúas Pettibone'
-        }
-      ];
+				// Precarga de imágenes
+				const preloadImages = () => {
+					images.forEach((img) => {
+						const link = document.createElement("link");
+						link.rel = "preload";
+						link.as = "image";
+						link.href = img.webp;
+						document.head.appendChild(link);
+					});
+				};
 
-        // Precarga de imágenes
-        const preloadImages = () => {
-          images.forEach(img => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = img.webp;
-            document.head.appendChild(link);
-          });
-        };
+				// Carga diferida para móviles
+				if ("IntersectionObserver" in window) {
+					const observer = new IntersectionObserver((entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								const img = entry.target;
+								img.src = img.dataset.src;
+								img.removeAttribute("data-src");
+								observer.unobserve(img);
+							}
+						});
+					});
 
-        // Carga diferida para móviles
-        if ('IntersectionObserver' in window) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-              }
-            });
-          });
+					document.querySelectorAll("img[data-src]").forEach((img) => {
+						observer.observe(img);
+					});
+				}
 
-          document.querySelectorAll('img[data-src]').forEach(img => {
-            observer.observe(img);
-          });
-        }
+				let currentIndex = 0;
+				let isAnimating = false;
 
-      let currentIndex = 0;
-              let isAnimating = false;
+				// Menú móvil
+				menuToggle.addEventListener("click", (e) => {
+					e.stopPropagation();
+					mobileMenu.classList.toggle("hidden");
+				});
 
-              // Menú móvil
-              menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                mobileMenu.classList.toggle('hidden');
-              });
+				// Cerrar menú
+				document.addEventListener("click", (e) => {
+					if (
+						!menuToggle.contains(e.target) &&
+						!mobileMenu.contains(e.target)
+					) {
+						mobileMenu.classList.add("hidden");
+					}
+				});
 
-              // Cerrar menú
-              document.addEventListener('click', (e) => {
-                if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                  mobileMenu.classList.add('hidden');
-        }
-            });
+				function lockScroll() {
+					document.body.classList.add("overflow-hidden");
+				}
 
-              function lockScroll() {
-                document.body.classList.add("overflow-hidden");
-              }
+				function unlockScroll() {
+					document.body.classList.remove("overflow-hidden");
+				}
 
-              function unlockScroll() {
-                document.body.classList.remove("overflow-hidden");
-              }
+				function changeSlide(direction) {
+					if (isAnimating) return;
+					isAnimating = true;
+					lockScroll(); // Bloquea el scroll durante la animación
 
-              function changeSlide(direction) {
-                if (isAnimating) return;
-                isAnimating = true;
-              lockScroll(); // Bloquea el scroll durante la animación
+					const elements = document.querySelectorAll(".slide-content");
+					elements.forEach((el) =>
+						el.classList.add("opacity-0", "transition-opacity", "duration-500")
+					);
 
-              const elements = document.querySelectorAll('.slide-content');
-              elements.forEach(el => el.classList.add("opacity-0", "transition-opacity", "duration-500"));
+					setTimeout(() => {
+						currentIndex =
+							direction === "next"
+								? (currentIndex + 1) % images.length
+								: (currentIndex - 1 + images.length) % images.length;
 
-              setTimeout(() => {
-                currentIndex = (direction === 'next')
-                  ? (currentIndex + 1) % images.length
-                  : (currentIndex - 1 + images.length) % images.length;
+						document.getElementById("image").src = images[currentIndex].src;
+						document.getElementById("text").textContent =
+							images[currentIndex].text;
+						document.getElementById("title").textContent =
+							images[currentIndex].title;
 
-                document.getElementById('image').src = images[currentIndex].src;
-                document.getElementById('text').textContent = images[currentIndex].text;
-                document.getElementById('title').textContent = images[currentIndex].title;
+						elements.forEach((el) => el.classList.remove("opacity-0"));
+						isAnimating = false;
+						unlockScroll(); // Desbloquea el scroll después de la animación
+					}, 500);
+				}
 
-                elements.forEach(el => el.classList.remove("opacity-0"));
-                isAnimating = false;
-                unlockScroll(); // Desbloquea el scroll después de la animación
-              }, 500);
-            }
+				// Eventos
+				window.addEventListener(
+					"wheel",
+					(e) => {
+						e.preventDefault(); // Evita el scroll al hacer scroll
+						if (e.deltaY > 0) changeSlide("next");
+						else changeSlide("prev");
+					},
+					{ passive: false }
+				);
 
-
-              // Eventos
-              window.addEventListener("wheel", (e) => {
-                e.preventDefault(); // Evita el scroll al hacer scroll
-                if (e.deltaY > 0) changeSlide("next");
-                else changeSlide("prev");
-              }, { passive: false });
-
-      let touchStartY = 0;
-              window.addEventListener("touchstart", (e) => touchStartY = e.touches[0].clientY);
-              window.addEventListener("touchend", (e) => {
-                const touchEndY = e.changedTouches[0].clientY;
-                const diff = touchStartY - touchEndY;
-              if (Math.abs(diff) > 50) {
-                e.preventDefault(); // Evita el scroll al deslizar
-                changeSlide(diff > 0 ? "next" : "prev");
-              }
-            }, { passive: false });
-    });
-  </script>
-</body>
-
+				let touchStartY = 0;
+				window.addEventListener(
+					"touchstart",
+					(e) => (touchStartY = e.touches[0].clientY)
+				);
+				window.addEventListener(
+					"touchend",
+					(e) => {
+						const touchEndY = e.changedTouches[0].clientY;
+						const diff = touchStartY - touchEndY;
+						if (Math.abs(diff) > 50) {
+							e.preventDefault(); // Evita el scroll al deslizar
+							changeSlide(diff > 0 ? "next" : "prev");
+						}
+					},
+					{ passive: false }
+				);
+			});
+		</script>
+	</body>
 </html>

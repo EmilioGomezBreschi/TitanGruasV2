@@ -1,197 +1,345 @@
 <!DOCTYPE html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			href="src/output.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="src/styles.css"
+			rel="stylesheet"
+		/>
+		<title>TitanGruas-Portafolio</title>
+		<link
+			rel="icon"
+			href="src/Newtitansvg.ico"
+		/>
+		<style>
+			:-webkit-full-screen video {
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: cover;
+			}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="src/output.css" rel="stylesheet" />
-  <link href="src/styles.css" rel="stylesheet" />
-  <title>TitanGruas-Portafolio</title>
-  <link rel="icon" href="src/Newtitansvg.ico" />
-  <style>
-    :-webkit-full-screen video {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover;
-    }
+			.video-mobile {
+				@media (max-aspect-ratio: 9/16) {
+					/* Detecta pantalla vertical */
+					video {
+						height: 100vh !important;
+						width: auto !important;
+						transform: translateX(-50%) translateY(0) scale(1.2);
+						left: 50%;
+						position: absolute;
+					}
+				}
+			}
+		</style>
+	</head>
 
-    .video-mobile {
-      @media (max-aspect-ratio: 9/16) {
+	<body class="text-white relative min-h-screen overflow-hidden">
+		<div class="fixed inset-0 w-screen h-[100dvh] z-0 overflow-hidden">
+			<video
+				id="videoPlayer"
+				class="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-[30%] w-full h-full md:object-fill object-fill md:scale-100 scale-100"
+				autoplay
+				loop
+				muted
+				playsinline
+				webkit-playsinline
+				preload="metadata"
+				poster="src/video-poster.webp"
+			>
+				<source
+					id="videoSource"
+					src="src/AutozoneHiab.webm"
+					type="video/webm"
+				/>
+				<source
+					src="src/AutozoneHiab.mp4"
+					type="video/mp4"
+				/>
+			</video>
+			<div class="absolute inset-0 flex justify-between items-center px-4">
+				<button
+					id="prevBtn"
+					aria-label="Video anterior"
+					class="bg-black/50 p-3 rounded-full hover:bg-black/70 transition-opacity backdrop-blur-sm"
+				>
+					<svg
+						aria-hidden="true"
+						class="w-6 h-6"
+					>
+						<use href="#chevron-left"></use>
+					</svg>
+				</button>
+				<button
+					id="nextBtn"
+					aria-label="Siguiente video"
+					class="bg-black/50 p-3 rounded-full hover:bg-black/70 transition-opacity backdrop-blur-sm"
+				>
+					<svg
+						aria-hidden="true"
+						class="w-6 h-6"
+					>
+						<use href="#chevron-right"></use>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<!-- Header -->
+		<header
+			class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-sm shadow-lg"
+		>
+			<div
+				class="container mx-auto px-4 flex justify-between items-center h-20"
+			>
+				<!-- Logo -->
+				<div class="w-10 md:w-48">
+					<img
+						src="src/Newtitansvg.svg"
+						alt="Logo TitanGrúas"
+						class="w-56 h-56 absolute top-0 left-0 mt-[-65px]"
+					/>
+				</div>
+				<!-- Menú Desktop -->
+				<nav class="hidden lg:flex items-center space-x-6 text-lg">
+					<a
+						href="index.html"
+						class="hover:text-[#00f900] transition-all duration-200"
+						>Inicio</a
+					>
+					<a
+						href="gruas.html"
+						class="hover:text-[#00f900] transition-all duration-200"
+						>Grúas</a
+					>
+					<a
+						href="portafolio.html"
+						class="hover:text-[#00f900] transition-all duration-200 underline text-[#00f900]"
+						>Portafolio</a
+					>
+					<div class="flex items-center space-x-4 ml-4">
+						<a
+							href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr"
+							target="_blank"
+							class="hover:opacity-75 transition-opacity"
+						>
+							<img
+								src="src/facebook-social-logo.svg"
+								alt="Facebook"
+								class="w-6"
+							/>
+						</a>
+						<a
+							href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng=="
+							target="_blank"
+							class="hover:opacity-75 transition-opacity"
+						>
+							<img
+								src="src/ig.svg"
+								alt="Instagram"
+								class="w-9"
+							/>
+						</a>
+						<a
+							href="https://w.app/zz5jth"
+							class="hover:opacity-75 transition-opacity"
+							target="_blank"
+						>
+							<img
+								src="src/whatsapp.svg"
+								alt="WhatsApp"
+								class="w-6"
+							/>
+						</a>
+						<div class="flex space-x-2">
+							<div class="border border-white rounded-full text-xs px-3 py-1">
+								443 107 4582
+							</div>
+							<div class="border border-white rounded-full text-xs px-3 py-1">
+								443 169 3581
+							</div>
+						</div>
+					</div>
+				</nav>
+				<!-- Botón Menú Mobile -->
+				<button
+					id="menu-toggle"
+					class="lg:hidden p-2 hover:opacity-75"
+				>
+					<img
+						src="src/menu.svg"
+						alt="Menú móvil"
+						class="w-7"
+					/>
+				</button>
+			</div>
+			<!-- Menú Mobile -->
+			<div
+				id="mobile-menu"
+				class="lg:hidden absolute top-full w-full bg-black/90 backdrop-blur-md hidden shadow-xl"
+			>
+				<div class="container mx-auto px-4 py-4">
+					<div class="flex flex-col items-center space-y-4">
+						<a
+							href="index.html"
+							class="w-full text-center py-2 hover:text-[#00f900]"
+							>Inicio</a
+						>
+						<a
+							href="gruas.html"
+							class="w-full text-center py-2 hover:text-[#00f900]"
+							>Grúas</a
+						>
+						<a
+							href="portafolio.html"
+							class="w-full text-center py-2 hover:text-[#00f900] text-[#00f900]"
+							>Portafolio</a
+						>
+						<div class="flex space-x-4 mt-4">
+							<a
+								href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr"
+								class="hover:opacity-75"
+							>
+								<img
+									src="src/facebook-social-logo.svg"
+									alt="Facebook"
+									class="w-8"
+								/>
+							</a>
+							<a
+								href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng=="
+								class="hover:opacity-75"
+							>
+								<img
+									src="src/ig.svg"
+									alt="Instagram"
+									class="w-10"
+								/>
+							</a>
+							<a
+								href="https://w.app/zz5jth"
+								class="hover:opacity-75"
+							>
+								<img
+									src="src/whatsapp.svg"
+									alt="WhatsApp"
+									class="w-8"
+								/>
+							</a>
+						</div>
+						<div class="flex flex-col space-y-2 w-full items-center mt-4">
+							<div class="border border-white rounded-full text-xs px-4 py-1">
+								443 107 4582
+							</div>
+							<div class="border border-white rounded-full text-xs px-4 py-1">
+								443 169 3581
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-        /* Detecta pantalla vertical */
-        video {
-          height: 100vh !important;
-          width: auto !important;
-          transform: translateX(-50%) translateY(0) scale(1.2);
-          left: 50%;
-          position: absolute;
-        }
-      }
-    }
-  </style>
-</head>
+		<!-- Script para el menú hamburguesa -->
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const menuToggle = document.getElementById("menu-toggle");
+				const mobileMenu = document.getElementById("mobile-menu");
 
-<body class="text-white relative min-h-screen overflow-hidden">
-  <div class="fixed inset-0 w-screen h-[100dvh] z-0 overflow-hidden">
-    <video id="videoPlayer"
-      class="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-[30%] w-full h-full md:object-fill object-fill md:scale-100 scale-100"
-      autoplay loop muted playsinline webkit-playsinline preload="metadata" poster="src/video-poster.webp">
-      <source id="videoSource" src="src/AutozoneHiab.webm" type="video/webm">
-      <source src="src/AutozoneHiab.mp4" type="video/mp4">
-    </video>
-    <div class="absolute inset-0 flex justify-between items-center px-4">
-      <button id="prevBtn" aria-label="Video anterior"
-        class="bg-black/50 p-3 rounded-full hover:bg-black/70 transition-opacity backdrop-blur-sm">
-        <svg aria-hidden="true" class="w-6 h-6">
-          <use href="#chevron-left"></use>
-        </svg>
-      </button>
-      <button id="nextBtn" aria-label="Siguiente video"
-        class="bg-black/50 p-3 rounded-full hover:bg-black/70 transition-opacity backdrop-blur-sm">
-        <svg aria-hidden="true" class="w-6 h-6">
-          <use href="#chevron-right"></use>
-        </svg>
-      </button>
-      </div>
-  </div>
-  <!-- Header -->
-  <header class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-sm shadow-lg">
-    <div class="container mx-auto px-4 flex justify-between items-center h-20">
-      <!-- Logo -->
-      <div class="w-10 md:w-48">
-        <img src="src/Newtitansvg.svg" alt="Logo TitanGrúas" class="w-56 h-56 absolute top-0 left-0 mt-[-65px]" />
-      </div>
-      <!-- Menú Desktop -->
-      <nav class="hidden lg:flex items-center space-x-6 text-lg">
-        <a href="index.html" class="hover:text-[#00f900] transition-all duration-200">Inicio</a>
-        <a href="gruas.html" class="hover:text-[#00f900] transition-all duration-200">Grúas</a>
-        <a href="portafolio.html"
-          class="hover:text-[#00f900] transition-all duration-200 underline text-[#00f900]">Portafolio</a>
-        <div class="flex items-center space-x-4 ml-4">
-          <a href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr" target="_blank"
-            class="hover:opacity-75 transition-opacity">
-            <img src="src/facebook-social-logo.svg" alt="Facebook" class="w-6" />
-          </a>
-          <a href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng==" target="_blank"
-            class="hover:opacity-75 transition-opacity">
-            <img src="src/ig.svg" alt="Instagram" class="w-9" />
-          </a>
-          <a href="https://w.app/zz5jth" class="hover:opacity-75 transition-opacity" target="_blank">
-            <img src="src/whatsapp.svg" alt="WhatsApp" class="w-6" />
-          </a>
-          <div class="flex space-x-2">
-            <div class="border border-white rounded-full text-xs px-3 py-1">443 107 4582</div>
-            <div class="border border-white rounded-full text-xs px-3 py-1">443 169 3581</div>
-          </div>
-        </div>
-      </nav>
-      <!-- Botón Menú Mobile -->
-      <button id="menu-toggle" class="lg:hidden p-2 hover:opacity-75">
-        <img src="src/menu.svg" alt="Menú móvil" class="w-7" />
-      </button>
-    </div>
-    <!-- Menú Mobile -->
-    <div id="mobile-menu" class="lg:hidden absolute top-full w-full bg-black/90 backdrop-blur-md hidden shadow-xl">
-      <div class="container mx-auto px-4 py-4">
-        <div class="flex flex-col items-center space-y-4">
-          <a href="index.html" class="w-full text-center py-2 hover:text-[#00f900]">Inicio</a>
-          <a href="gruas.html" class="w-full text-center py-2 hover:text-[#00f900]">Grúas</a>
-          <a href="portafolio.html" class="w-full text-center py-2 hover:text-[#00f900] text-[#00f900]">Portafolio</a>
-          <div class="flex space-x-4 mt-4">
-            <a href="https://www.facebook.com/share/161kVDoQge/?mibextid=wwXIfr" class="hover:opacity-75">
-              <img src="src/facebook-social-logo.svg" alt="Facebook" class="w-8" />
-            </a>
-            <a href="https://www.instagram.com/titangruas.mx?igsh=MTU2bmQybDNwdWw4Ng==" class="hover:opacity-75">
-              <img src="src/ig.svg" alt="Instagram" class="w-10" />
-            </a>
-            <a href="https://w.app/zz5jth" class="hover:opacity-75">
-              <img src="src/whatsapp.svg" alt="WhatsApp" class="w-8" />
-            </a>
-          </div>
-          <div class="flex flex-col space-y-2 w-full items-center mt-4">
-            <div class="border border-white rounded-full text-xs px-4 py-1">443 107 4582</div>
-            <div class="border border-white rounded-full text-xs px-4 py-1">443 169 3581</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+				const toggleMenu = () => {
+					const isExpanded =
+						menuToggle.getAttribute("aria-expanded") === "true";
+					menuToggle.setAttribute("aria-expanded", !isExpanded);
+					mobileMenu.classList.toggle("hidden");
+					mobileMenu.setAttribute("aria-hidden", isExpanded);
+				};
 
-  <!-- Script para el menú hamburguesa -->
-  <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+				menuToggle.addEventListener("click", (e) => {
+					e.stopPropagation();
+					toggleMenu();
+				});
 
-      const toggleMenu = () => {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.setAttribute('aria-hidden', isExpanded);
-      };
+				const videos = [
+					{
+						webm: "src/optimized-AutozoneHiab.webm",
+						mp4: "src/AutozoneHiab.mp4",
+					},
+					{ webm: "src/optimized-Innvictus.webm", mp4: "src/Innvictus.mp4" },
+					{ webm: "src/optimized-Jardinero.webm", mp4: "src/Jardinero.mp4" },
+					{ webm: "src/optimized-Oxxo.webm", mp4: "src/Oxxo.mp4" },
+					{ webm: "src/optimized-Puente.webm", mp4: "src/Puente.mp4" },
+					{ webm: "src/optimized-SevenDays.webm", mp4: "src/SevenDays.mp4" },
+					{ webm: "src/optimized-Tiendas3B.webm", mp4: "src/Tiendas3B.mp4" },
+				];
 
-      menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
+				let currentVideo = 0;
+				const videoPlayer = document.getElementById("videoPlayer");
 
-      const videos = [
-        { webm: 'src/optimized-AutozoneHiab.webm', mp4: 'src/AutozoneHiab.mp4' },
-        { webm: 'src/optimized-Innvictus.webm', mp4: 'src/Innvictus.mp4' },
-        { webm: 'src/optimized-Jardinero.webm', mp4: 'src/Jardinero.mp4' },
-        { webm: 'src/optimized-Oxxo.webm', mp4: 'src/Oxxo.mp4' },
-        { webm: 'src/optimized-Puente.webm', mp4: 'src/Puente.mp4' },
-        { webm: 'src/optimized-SevenDays.webm', mp4: 'src/SevenDays.mp4' },
-        { webm: 'src/optimized-Tiendas3B.webm', mp4: 'src/Tiendas3B.mp4' }
-      ];
+				const changeVideo = (direction) => {
+					currentVideo =
+						(currentVideo + direction + videos.length) % videos.length;
 
-      let currentVideo = 0;
-      const videoPlayer = document.getElementById('videoPlayer');
+					const preloadLink = document.createElement("link");
+					preloadLink.rel = "preload";
+					preloadLink.as = "video";
+					preloadLink.href = videos[currentVideo].webm;
+					document.head.appendChild(preloadLink);
 
-      const changeVideo = (direction) => {
-        currentVideo = (currentVideo + direction + videos.length) % videos.length;
-
-        const preloadLink = document.createElement('link');
-        preloadLink.rel = 'preload';
-        preloadLink.as = 'video';
-        preloadLink.href = videos[currentVideo].webm;
-        document.head.appendChild(preloadLink);
-
-        videoPlayer.innerHTML = `
+					videoPlayer.innerHTML = `
             <source src="${videos[currentVideo].webm}" type="video/webm">
             <source src="${videos[currentVideo].mp4}" type="video/mp4">
           `;
-        videoPlayer.load();
-        videoPlayer.play().catch(() => { });
-      };
+					videoPlayer.load();
+					videoPlayer.play().catch(() => {});
+				};
 
-      const handleNavigation = (e, direction) => {
-        e.preventDefault();
-        e.stopPropagation();
-        changeVideo(direction);
-      };
+				const handleNavigation = (e, direction) => {
+					e.preventDefault();
+					e.stopPropagation();
+					changeVideo(direction);
+				};
 
-      document.getElementById('prevBtn').addEventListener('click', (e) => handleNavigation(e, -1));
-      document.getElementById('nextBtn').addEventListener('click', (e) => handleNavigation(e, 1));
+				document
+					.getElementById("prevBtn")
+					.addEventListener("click", (e) => handleNavigation(e, -1));
+				document
+					.getElementById("nextBtn")
+					.addEventListener("click", (e) => handleNavigation(e, 1));
 
-      const handleVideoResize = () => {
-        const isPortrait = window.matchMedia('(orientation: portrait)').matches;
-        videoPlayer.classList.toggle('object-cover', !isPortrait);
-        videoPlayer.classList.toggle('object-contain', isPortrait);
-      };
+				const handleVideoResize = () => {
+					const isPortrait = window.matchMedia(
+						"(orientation: portrait)"
+					).matches;
+					videoPlayer.classList.toggle("object-cover", !isPortrait);
+					videoPlayer.classList.toggle("object-contain", isPortrait);
+				};
 
-      window.addEventListener('resize', handleVideoResize);
-      handleVideoResize();
-    });
-  </script>
-  <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-    <symbol id="chevron-left" viewBox="0 0 24 24">
-      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-    </symbol>
-    <symbol id="chevron-right" viewBox="0 0 24 24">
-      <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
-    </symbol>
-  </svg>
-</body>
-
+				window.addEventListener("resize", handleVideoResize);
+				handleVideoResize();
+			});
+		</script>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="hidden"
+		>
+			<symbol
+				id="chevron-left"
+				viewBox="0 0 24 24"
+			>
+				<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+			</symbol>
+			<symbol
+				id="chevron-right"
+				viewBox="0 0 24 24"
+			>
+				<path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+			</symbol>
+		</svg>
+	</body>
 </html>
